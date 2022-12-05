@@ -167,6 +167,9 @@ function Collect-Baseline() {
   
   Load-txt $CollectBaselinePath
   
+  Write-Host ""
+  Write-Host "      Collecting..."
+
   #No old content
   Clear-Content $baselinePath
 
@@ -178,6 +181,44 @@ function Collect-Baseline() {
     #$fileExists = Test-Path $hash.Path
   }
 
+
+  Write-Host ""
+  Write-Host "      Press any key to move on"
+  $continue = Read-NextKey
+
+  if ($continue) {
+    Collect-BaselineEnd
+  }
+
+
+  
+  #Write-Host ""
+  #Write-Host "      What would you like to do?"
+  #Write-Host ""
+  #Write-Host "      A) Menu-Screen"
+  #Write-Host "      B) Monitoring-Files"
+  #Write-Host ""
+  #
+  #do {
+  #  $userResponse = Read-Host -Prompt "      Answer (A or B)"
+  #} while ($userResponse -notlike "A" -and $userResponse -notlike "B")
+  #
+  #Write-Host ""
+  #
+  #Switch ($userResponse) {
+  #  "A" { Menu-Screen }
+  #  "B" { Monitoring-Files }
+  #}
+}
+
+function Collect-BaselineEnd() {
+  Start-Sleep -Seconds 1
+  
+  Clear-Host
+  
+  Load-txt $CollectBaselinePath
+  
+  
   Write-Host ""
   Write-Host "      What would you like to do?"
   Write-Host ""
@@ -196,8 +237,6 @@ function Collect-Baseline() {
     "B" { Monitoring-Files }
   }
 }
-
-
 
 function Read-Character() {
   if ($host.UI.RawUI.KeyAvailable) {
