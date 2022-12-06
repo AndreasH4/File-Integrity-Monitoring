@@ -1,6 +1,11 @@
 # File-Integrity-Monitoring
 File Integrity Monitoring application created with PowerShell.
 
+Launch the application in PowerShell
+PS> cd "C:\path\to\FIM"
+PS> Powershell -ExecutionPolicy Bypass -File .\FIM.ps1
+
+
 Detects when a file in the files folder has been modified, deleted or created using hash values.
 
 1. Collect baseline
