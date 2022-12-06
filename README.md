@@ -1,8 +1,8 @@
 # File-Integrity-Monitoring
 File Integrity Monitoring application created with PowerShell.
 
-Launch the application in PowerShell
-PS> cd "C:\path\to\FIM"
+Launch the application in PowerShell                     
+PS> cd "C:\path\to\FIM"                               
 PS> Powershell -ExecutionPolicy Bypass -File .\FIM.ps1
 
 
