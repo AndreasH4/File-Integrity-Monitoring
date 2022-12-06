@@ -348,7 +348,7 @@ function search() {
     }
     else {
       # File has been compromised!
-      Write-Host "      $($hash.Path) has changed!!!" -ForegroundColor Yellow
+      Write-Host "      $($hash.Path) has changed!" -ForegroundColor Yellow
     }
   
 
