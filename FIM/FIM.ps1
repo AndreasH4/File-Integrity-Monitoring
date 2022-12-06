@@ -143,21 +143,19 @@ function Menu-Screen() {
 
   Write-Host "      What would you like to do?"
   Write-Host ""
-  Write-Host "      A) Collect new Baseline?"
-  Write-Host "      B) Begin monitoring files with saved Baseline?"
-  Write-Host "      C) Quit"
+  Write-Host "      A) Collect new Baseline"
+  Write-Host "      B) Quit"
   Write-Host ""
 
   do {
-    $userResponse = Read-Host -Prompt "      Answer (A or B or C)"
-  } while ($userResponse -notlike "A" -and $userResponse -notlike "B" -and $userResponse -notlike "C")
+    $userResponse = Read-Host -Prompt "      Answer (A or B)"
+  } while ($userResponse -notlike "A" -and $userResponse -notlike "B")
 
   Write-Host ""
 
   Switch ($userResponse) {
     "A" { Collect-Baseline }
-    "B" { Monitoring-Files }
-    "C" { $host.Exit }
+    "B" { $host.Exit }
   }
 }
 
@@ -178,7 +176,6 @@ function Collect-Baseline() {
   foreach ($f in $files) {
     $hash = Calculate-File-Hash $f.FullName
     "$($hash.Path)|$($hash.Hash)" | Add-Content -Path $baselinePath
-    #$fileExists = Test-Path $hash.Path
   }
 
 
@@ -189,26 +186,6 @@ function Collect-Baseline() {
   if ($continue) {
     Collect-BaselineEnd
   }
-
-
-  
-  #Write-Host ""
-  #Write-Host "      What would you like to do?"
-  #Write-Host ""
-  #Write-Host "      A) Menu-Screen"
-  #Write-Host "      B) Monitoring-Files"
-  #Write-Host ""
-  #
-  #do {
-  #  $userResponse = Read-Host -Prompt "      Answer (A or B)"
-  #} while ($userResponse -notlike "A" -and $userResponse -notlike "B")
-  #
-  #Write-Host ""
-  #
-  #Switch ($userResponse) {
-  #  "A" { Menu-Screen }
-  #  "B" { Monitoring-Files }
-  #}
 }
 
 function Collect-BaselineEnd() {
@@ -222,8 +199,8 @@ function Collect-BaselineEnd() {
   Write-Host ""
   Write-Host "      What would you like to do?"
   Write-Host ""
-  Write-Host "      A) Menu-Screen"
-  Write-Host "      B) Monitoring-Files"
+  Write-Host "      A) Monitoring files"
+  Write-Host "      B) Menu"
   Write-Host ""
 
   do {
@@ -233,8 +210,8 @@ function Collect-BaselineEnd() {
   Write-Host ""
 
   Switch ($userResponse) {
-    "A" { Menu-Screen }
-    "B" { Monitoring-Files }
+    "A" { Monitoring-Files }
+    "B" { Menu-Screen }
   }
 }
 
@@ -358,7 +335,6 @@ function search() {
   
   
   foreach ($f in $files) {
-    ##$hash = Calculate-File-Hash ".\Desktop\Projekte\FIM\Files\a.txt"
     $hash = Calculate-File-Hash $f.FullName
     
     # Notify if a new file has been created
@@ -371,7 +347,7 @@ function search() {
       # The file has not changed
     }
     else {
-      # File has been compromised!, notify the user
+      # File has been compromised!
       Write-Host "      $($hash.Path) has changed!!!" -ForegroundColor Yellow
     }
   
@@ -399,7 +375,7 @@ function MonitoringEnd {
   Write-Host "      What would you like to do?"
   Write-Host ""
   Write-Host "      A) Monitoring again"
-  Write-Host "      B) Menu-Screen"
+  Write-Host "      B) Menu"
   Write-Host ""
 
   
