@@ -1,4 +1,4 @@
-# File-Integrity-Monitoring
+# File Integrity Monitoring
 File Integrity Monitoring application created with PowerShell.
 
 Launch the application in PowerShell                     
